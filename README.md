@@ -11,6 +11,13 @@ Run:
 
 where **DNA.txt** hold sequence information (e.g. FASTA file).
 
+
+
+
+
+
+
+
 ## Sample
 ![](out.png)
 
