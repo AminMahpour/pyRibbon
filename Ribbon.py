@@ -1,12 +1,28 @@
 #!/usr/bin/env python
 import cairo, sys
 
+# parse FASTA fornat files
+def parse(seq):
+    output = ""
+
+    lines = seq.split("\n")
+    for line in lines:
+        if line.startswith(">"):
+            continue
+        else:
+            output += line
+
+    return output
+
 file = open(sys.argv[1],mode="r")
-dna = file.read()
+dna = parse(file.read())
 length = int(len(dna) * 1 + 20)
 s = cairo.PDFSurface(sys.argv[2],length,30)
 c = cairo.Context(s)
 c.set_antialias(cairo.ANTIALIAS_NONE)
+
+
+
 
 
 def draw_base(base, j):
@@ -27,7 +43,7 @@ def draw_base(base, j):
     if j % 50 == 0:
         # draw ticks
         c.set_source_rgb(0,0,0)
-        c. rectangle(10+1*j,5,0.5,3)
+        c.rectangle(10+1*j,5,0.5,3)
         c.fill()
         # draw numbers
         c.set_font_size(3)
@@ -36,6 +52,5 @@ def draw_base(base, j):
 
 j=0
 for i in dna:
-    print(i)
     draw_base(i, j)
     j += 1
