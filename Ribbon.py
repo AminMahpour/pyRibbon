@@ -3,7 +3,7 @@ import cairo
 import sys
 
 
-# parse FASTA fornat files
+# parse FASTA format files
 
 def parse(seq):
     output = ""
